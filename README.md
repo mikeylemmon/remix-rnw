@@ -43,6 +43,15 @@ Warning: Expected server HTML to contain a matching <meta> in <head>.
       on the remix side, or is related to the specific way that SSR is
       implemented in Horus's example.
   - [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://githubbox.com/mikeylemmon/remix-rnw/blob/horus-styles/app/routes/index.tsx)
+- [tyrauber-styles](https://github.com/mikeylemmon/remix-rnw/tree/tyrauber-styles)
+  - This branch is very similar to the
+    [horus-styles](https://github.com/mikeylemmon/remix-rnw/tree/horus-styles)
+    branch, but uses
+    [Ty Rauber's code](https://github.com/tyrauber/remix-expo/tree/main/apps/remix/app
+    for server-side RNW styles instead of Horus Lugo's
+    ([diff](https://github.com/mikeylemmon/remix-rnw/compare/horus-styles...tyrauber-styles)).
+    The hydration errors are the same.
+  - [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://githubbox.com/mikeylemmon/remix-rnw/blob/tyrauber-styles/app/routes/index.tsx)
 
 ---
 
