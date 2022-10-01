@@ -1,9 +1,9 @@
-// See https://horus.dev/blog/react-native-web-remix-setup#:~:text=import%20%7B%20renderToString%2C%20renderToStaticMarkup%20%7D%20from%20%22react%2Ddom/server%22%3B
-import { renderToString, renderToStaticMarkup } from "react-dom/server";
+// See https://github.com/tyrauber/remix-expo/blob/main/apps/remix/app/entry.server.tsx
+import { renderToString } from "react-dom/server";
 import { RemixServer } from "@remix-run/react";
 import type { EntryContext } from "@remix-run/node";
 import { AppRegistry } from "react-native-web";
-import { ReplaceWithStylesSSRTag } from "./rn-styles";
+import { ReactNativeStylesContext } from "./rn-styles";
 
 export default function handleRequest(
   request: Request,
@@ -15,16 +15,16 @@ export default function handleRequest(
 
   AppRegistry.registerComponent("App", () => App);
 
-  let markup = renderToString(<App />);
-
   // @ts-ignore
   const { getStyleElement } = AppRegistry.getApplication("App", {});
-  const stylesMarkup = renderToStaticMarkup(getStyleElement());
 
-  markup = markup.replace(
-    renderToStaticMarkup(ReplaceWithStylesSSRTag),
-    stylesMarkup
+  const page = (
+    <ReactNativeStylesContext.Provider value={getStyleElement()}>
+      <App />
+    </ReactNativeStylesContext.Provider>
   );
+
+  const markup = renderToString(page);
 
   responseHeaders.set("Content-Type", "text/html");
 

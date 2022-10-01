@@ -34,7 +34,34 @@ export default function Index() {
     >
       <h1>Welcome to Remix</h1>
       <View />
-
+      <p>
+        This branch is very similar to the{" "}
+        <a
+          target="_blank"
+          href="https://github.com/mikeylemmon/remix-rnw/tree/horus-styles"
+          rel="noreferrer"
+        >
+          horus-styles
+        </a>{" "}
+        branch, but uses{" "}
+        <a
+          target="_blank"
+          href="https://github.com/tyrauber/remix-expo/tree/main/apps/remix/app"
+          rel="noreferrer"
+        >
+          Ty Rauber's code
+        </a>{" "}
+        for server-side RNW styles instead of Horus Lugo's (
+        <a
+          target="_blank"
+          href="https://github.com/mikeylemmon/remix-rnw/compare/horus-styles...tyrauber-styles"
+          rel="noreferrer"
+        >
+          diff
+        </a>
+        ). The hydration errors are the same.
+      </p>
+      <h3>Description from horus-lugo branch</h3>
       <p>
         This branch follows the process outlined by Horus Lugo{" "}
         <a
@@ -46,7 +73,6 @@ export default function Index() {
         </a>{" "}
         to try to get SSR for react-native-web styles working properly.
       </p>
-
       <p>
         Following Horus's process results in the hydration error outlined by
         Horus in{" "}
@@ -66,7 +92,6 @@ export default function Index() {
         </span>
         ).
       </p>
-
       <p>
         Note that the RNW maintainer's response in closing the issue suggests
         that Horus was incorrectly using server APIs on the client — in fact,
@@ -85,14 +110,12 @@ export default function Index() {
         here. The hydration issues remain even when use of
         `renderToStaticMarkup` is removed from this page.
       </p>
-
       <p>
         Unlike Horus's example, this branch does not use `pnpm`. It also omits
         some style normalization and makes no attempt to alias `react-native` to
         the `react-native-web` package — `react-native-web` is always used
         directly.
       </p>
-
       <p>
         It is unclear if the hydration issue results from a problem in
         react-native-web, remix, Hugo's implementation of RNW SSR styling (which
@@ -102,7 +125,6 @@ export default function Index() {
         attempting SSR styling (see "main" and "mod-remix-resolve-configs"
         branches of this repo).
       </p>
-
       <h3>Links</h3>
       <ul>
         <li>
@@ -143,7 +165,6 @@ export default function Index() {
           </a>
         </li>
       </ul>
-
       <h2 style={{ marginTop: "2rem" }}>Observed client/server RNW styles:</h2>
       <div
         style={{ display: "flex", flexDirection: "row", alignItems: "stretch" }}

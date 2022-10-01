@@ -4,7 +4,17 @@ Experiments integrating React Native Web (RNW) into a Remix app.
 
 Discussion: [Usage with React Native (+ Web)](https://github.com/remix-run/remix/discussions/1578)
 
-## Current branch: horus-styles [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://githubbox.com/mikeylemmon/remix-rnw/blob/horus-styles/app/routes/index.tsx)
+## Current branch: tyrauber-styles [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://githubbox.com/mikeylemmon/remix-rnw/blob/tyrauber-styles/app/routes/index.tsx)
+
+This branch is very similar to the
+[horus-styles](https://github.com/mikeylemmon/remix-rnw/tree/horus-styles)
+branch, but uses
+[Ty Rauber's code](https://github.com/tyrauber/remix-expo/tree/main/apps/remix/app)
+for server-side RNW styles instead of Horus Lugo's
+([diff](https://github.com/mikeylemmon/remix-rnw/compare/horus-styles...tyrauber-styles)).
+The hydration errors are the same.
+
+### Description from horus-styles branch
 
 This branch follows the process outlined by Horus Lugo (@HorusGoul)
 [here](https://horus.dev/blog/react-native-web-remix-setup#:~:text=2.%20React%20Native%20Web%20Styles)
@@ -66,6 +76,15 @@ branches of this repo).
       on the remix side, or is related to the specific way that SSR is
       implemented in Horus's example.
   - [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://githubbox.com/mikeylemmon/remix-rnw/blob/horus-styles/app/routes/index.tsx)
+- [tyrauber-styles](https://github.com/mikeylemmon/remix-rnw/tree/tyrauber-styles)
+  - This branch is very similar to the
+    [horus-styles](https://github.com/mikeylemmon/remix-rnw/tree/horus-styles)
+    branch, but uses
+    [Ty Rauber's code](https://github.com/tyrauber/remix-expo/tree/main/apps/remix/app
+    for server-side RNW styles instead of Horus Lugo's
+    ([diff](https://github.com/mikeylemmon/remix-rnw/compare/horus-styles...tyrauber-styles)).
+    The hydration errors are the same.
+  - [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://githubbox.com/mikeylemmon/remix-rnw/blob/tyrauber-styles/app/routes/index.tsx)
 
 ---
 

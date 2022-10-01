@@ -1,4 +1,5 @@
 // See https://horus.dev/blog/react-native-web-remix-setup#:~:text=import%20%7B%20useReactNativeStyles%20%7D%20from%20%22./rn%2Dstyles%22%3B
+// Also https://github.com/tyrauber/remix-expo/blob/main/apps/remix/app/root.tsx
 import type { MetaFunction } from "@remix-run/node";
 import {
   Links,
