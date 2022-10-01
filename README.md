@@ -4,15 +4,38 @@ Experiments integrating React Native Web (RNW) into a Remix app.
 
 Discussion: [Usage with React Native (+ Web)](https://github.com/remix-run/remix/discussions/1578)
 
-## Current branch: main [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://githubbox.com/mikeylemmon/remix-rnw/blob/main/app/routes/index.tsx)
+## Current branch: horus-styles [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://githubbox.com/mikeylemmon/remix-rnw/blob/horus-styles/app/routes/index.tsx)
 
-This is a "Just the basics" Remix app with the sole addition of a single
-react-native-web `View` (see [./app/routes/index.tsx](./app/routes/index.tsx)).
-Adding the `View` results in a hydration error:
+This branch follows the process outlined by Horus Lugo (@HorusGoul)
+[here](https://horus.dev/blog/react-native-web-remix-setup#:~:text=2.%20React%20Native%20Web%20Styles)
+to try to get SSR for react-native-web styles working properly.
 
-```
-Warning: Expected server HTML to contain a matching <meta> in <head>.
-```
+Following that process results in the hydration error outlined by Horus in
+[necolas/react-native-web#2326](https://github.com/necolas/react-native-web/issues/2326).
+
+Note that the RNW maintainer's response in closing the issue suggests
+that Horus was incorrectly using server APIs on the client — in fact,
+the server API `renderToStaticMarkup`
+[in Horus's client code](https://github.com/HorusGoul/rnw-css-hydration-bug-error-repro/blob/main/app/entry.client.tsx#L22)
+was being used solely for debug logging purposes to demonstrate the
+difference between client- and server-rendered styles, and is unrelated
+to the client's hydration, which relies solely on client-side APIs. A
+similar approach is used to display the client/server markup differences
+on this branch. The hydration issues remain even when use of `renderToStaticMarkup`
+is removed from the page.
+
+Unlike Horus's example, this branch does not use `pnpm`. It also omits
+some style normalization and makes no attempt to alias `react-native` to
+the `react-native-web` package — `react-native-web` is always used
+directly.
+
+It is unclear if the hydration issue results from a problem in
+react-native-web, remix, Hugo's implementation of RNW SSR styling (which
+is copied here), or some combination the three. It is also unclear
+whether this issue is related-to or completely-different-from the
+hydration issue that occurs when using react-native-web without
+attempting SSR styling (see "main" and "mod-remix-resolve-configs"
+branches of this repo).
 
 ### Versions
 
