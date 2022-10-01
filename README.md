@@ -4,11 +4,25 @@ Experiments integrating React Native Web (RNW) into a Remix app.
 
 Discussion: [Usage with React Native (+ Web)](https://github.com/remix-run/remix/discussions/1578)
 
-## Current branch: main [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://githubbox.com/mikeylemmon/remix-rnw/blob/main/app/routes/index.tsx)
+## Current branch: mod-remix-resolve-configs [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://githubbox.com/mikeylemmon/remix-rnw/blob/mod-remix-resolve-configs/app/routes/index.tsx)
 
-This is a "Just the basics" Remix app with the sole addition of a single
-react-native-web `View` (see [./app/routes/index.tsx](./app/routes/index.tsx)).
-Adding the `View` results in a hydration error:
+This branch uses
+[a mod of @remix-run/dev](https://github.com/remix-run/remix/compare/main...mikeylemmon:remix:config-add-resolve-opts)
+to enable compatibility with many packages in the react-native(-web)
+ecosystem by...
+
+- [Prioritizing resolving files ending with ".web.&lt;ext&gt;" over files
+  ending with just ".&lt;ext&gt;"](./remix.config.js#L11)
+- [Aliasing "react-native" to "react-native-web".](./remix.config.js#L15)
+
+With these modifications in place, the somewhat-arbitrarily-selected
+cross-platform module
+[expo-linear-gradient](https://docs.expo.dev/versions/latest/sdk/linear-gradient/)
+([source code](https://github.com/expo/expo/tree/sdk-46/packages/expo-linear-gradient))
+is able to be used inside this Remix app.
+
+It encounters the same hydration error as the
+[main branch](https://github.com/mikeylemmon/remix-rnw/tree/main):
 
 ```
 Warning: Expected server HTML to contain a matching <meta> in <head>.
@@ -16,6 +30,7 @@ Warning: Expected server HTML to contain a matching <meta> in <head>.
 
 ### Versions
 
+- @remix-run/dev: [git+https://github.com/mikeylemmon/remix-dev](https://github.com/mikeylemmon/remix-dev)
 - @remix-run/\*: ^1.7.2
 - react: ^18.2.0
 - react-native-web: ^0.18.9

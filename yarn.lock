@@ -1187,10 +1187,9 @@
     tiny-glob "^0.2.9"
     tslib "^2.4.0"
 
-"@remix-run/dev@^1.7.2":
+"@remix-run/dev@git+https://github.com/mikeylemmon/remix-dev":
   version "1.7.2"
-  resolved "https://registry.yarnpkg.com/@remix-run/dev/-/dev-1.7.2.tgz#dee9ce4502e402652395f2d9aa9a56cd766778f6"
-  integrity sha512-oJcaju9zID+xOUnkMQJBEbjiiYBvILVsX64Fzi1itlm5vjNuo99nmKM7gleaDawNLo3lyd6Xd+JyMa3aIwDKOQ==
+  resolved "git+https://github.com/mikeylemmon/remix-dev#a841f93275e8748e7534d69e48c707f4367bc20d"
   dependencies:
     "@babel/core" "^7.18.6"
     "@babel/plugin-syntax-jsx" "^7.18.6"
@@ -1206,6 +1205,7 @@
     chokidar "^3.5.1"
     dotenv "^16.0.0"
     esbuild "0.14.51"
+    esbuild-plugin-alias "^0.2.1"
     exit-hook "2.2.1"
     express "^4.17.1"
     fast-glob "3.2.11"
@@ -1515,7 +1515,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-native-web@npm:@types/react-native":
+"@types/react-native@^0.70.4":
   version "0.70.4"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.70.4.tgz#316f0e9b4b51bbe5cecf09284555f01283afe3b2"
   integrity sha512-z5tKfblHLG6jts2AQcioDw4N+F2EzflO9n495yNyqyMYRkSIVTLX64MHBeqMp5wfOY5mshy0GsOgnFSXrXKQSg==
@@ -2761,6 +2761,11 @@ esbuild-openbsd-64@0.14.51:
   resolved "https://registry.yarnpkg.com/esbuild-openbsd-64/-/esbuild-openbsd-64-0.14.51.tgz#4adba0b7ea7eb1428bb00d8e94c199a949b130e8"
   integrity sha512-7R1/p39M+LSVQVgDVlcY1KKm6kFKjERSX1lipMG51NPcspJD1tmiZSmmBXoY5jhHIu6JL1QkFDTx94gMYK6vfA==
 
+esbuild-plugin-alias@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/esbuild-plugin-alias/-/esbuild-plugin-alias-0.2.1.tgz#45a86cb941e20e7c2bc68a2bea53562172494fcb"
+  integrity sha512-jyfL/pwPqaFXyKnj8lP8iLk6Z0m099uXR45aSN8Av1XD4vhvQutxxPzgA2bTcAwQpa1zCXDcWOlhFgyP3GKqhQ==
+
 esbuild-sunos-64@0.14.51:
   version "0.14.51"
   resolved "https://registry.yarnpkg.com/esbuild-sunos-64/-/esbuild-sunos-64-0.14.51.tgz#4b8a6d97dfedda30a6e39607393c5c90ebf63891"
@@ -3177,6 +3182,11 @@ expand-brackets@^2.1.4:
     regex-not "^1.0.0"
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
+
+expo-linear-gradient@^11.4.0:
+  version "11.4.0"
+  resolved "https://registry.yarnpkg.com/expo-linear-gradient/-/expo-linear-gradient-11.4.0.tgz#20ecad4d11e66e35b31600e5389ec9c4067f7312"
+  integrity sha512-qtIfsLs7NOpfxYrFSJL5uLtNHIkBHQFuQ3f7++XpoJTSm4eQVFxjjkCGWiLIrkpVjKzmgp3DLuIVsadsGX21lA==
 
 express@^4.17.1:
   version "4.18.1"
