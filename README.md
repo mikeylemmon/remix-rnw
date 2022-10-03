@@ -14,6 +14,10 @@ Adding the `View` results in a hydration error:
 Warning: Expected server HTML to contain a matching <meta> in <head>.
 ```
 
+This hydration error does not occur in a simple create-react-app+SSR app
+that I made to try to re-create the issue —
+https://github.com/mikeylemmon/cra-rnw-ssr ([Open in CodeSandbox](https://githubbox.com/mikeylemmon/cra-rnw-ssr/blob/main/src/index.tsx))
+
 ### Versions
 
 - @remix-run/\*: ^1.7.2
