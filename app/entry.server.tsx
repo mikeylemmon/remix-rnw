@@ -1,9 +1,12 @@
-// See https://github.com/tyrauber/remix-expo/blob/main/apps/remix/app/entry.server.tsx
-import { renderToString } from "react-dom/server";
-import { RemixServer } from "@remix-run/react";
+import { PassThrough } from "stream";
 import type { EntryContext } from "@remix-run/node";
+import { Response } from "@remix-run/node";
+import { RemixServer } from "@remix-run/react";
 import { AppRegistry } from "react-native-web";
+import { renderToPipeableStream } from "react-dom/server";
 import { ReactNativeStylesContext } from "./rn-styles";
+
+const ABORT_DELAY = 5000;
 
 export default function handleRequest(
   request: Request,
@@ -11,25 +14,44 @@ export default function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext
 ) {
-  const App = () => <RemixServer context={remixContext} url={request.url} />;
+  return new Promise((resolve, reject) => {
+    const App = () => <RemixServer context={remixContext} url={request.url} />;
+    AppRegistry.registerComponent("App", () => App);
+    // @ts-ignore
+    const { getStyleElement } = AppRegistry.getApplication("App", {});
+    const page = (
+      <ReactNativeStylesContext.Provider value={getStyleElement()}>
+        <App />
+      </ReactNativeStylesContext.Provider>
+    );
 
-  AppRegistry.registerComponent("App", () => App);
+    let didError = false;
 
-  // @ts-ignore
-  const { getStyleElement } = AppRegistry.getApplication("App", {});
+    const { pipe, abort } = renderToPipeableStream(page, {
+      onShellReady: () => {
+        const body = new PassThrough();
 
-  const page = (
-    <ReactNativeStylesContext.Provider value={getStyleElement()}>
-      <App />
-    </ReactNativeStylesContext.Provider>
-  );
+        responseHeaders.set("Content-Type", "text/html");
 
-  const markup = renderToString(page);
+        resolve(
+          new Response(body, {
+            headers: responseHeaders,
+            status: didError ? 500 : responseStatusCode,
+          })
+        );
 
-  responseHeaders.set("Content-Type", "text/html");
+        pipe(body);
+      },
+      onShellError: (err) => {
+        reject(err);
+      },
+      onError: (error) => {
+        didError = true;
 
-  return new Response("<!DOCTYPE html>" + markup, {
-    status: responseStatusCode,
-    headers: responseHeaders,
+        console.error(error);
+      },
+    });
+
+    setTimeout(abort, ABORT_DELAY);
   });
 }
