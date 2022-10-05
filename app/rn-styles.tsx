@@ -1,10 +1,29 @@
-// via https://github.com/tyrauber/remix-expo/blob/main/apps/remix/app/rn-styles.tsx
 import { createContext, Fragment, useContext } from "react";
 
-export const ReactNativeStylesContext = createContext<
-  React.ReactElement<unknown>
->(<Fragment />);
+export const ReactNativeStylesContext = createContext<{
+  isClient?: boolean;
+  getStyleElement: () => React.ReactElement<unknown>;
+}>({ getStyleElement: () => <Fragment /> });
 
 export function useReactNativeStyles() {
-  return useContext(ReactNativeStylesContext);
+  const { isClient, getStyleElement } = useContext(ReactNativeStylesContext);
+  if (!isClient) {
+    return getStyleElement();
+  }
+
+  // Use server-generated stylesheet if it exists (it always should)
+  const serverSheet = document.getElementById("react-native-stylesheet");
+  if (serverSheet) {
+    return (
+      <style
+        dangerouslySetInnerHTML={{
+          __html: serverSheet.innerHTML,
+        }}
+        id="react-native-stylesheet"
+      />
+    );
+  }
+
+  // Fallback to client-generated stylesheet
+  return getStyleElement();
 }
