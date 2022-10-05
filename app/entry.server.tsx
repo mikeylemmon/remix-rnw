@@ -20,7 +20,7 @@ export default function handleRequest(
     // @ts-ignore
     const { getStyleElement } = AppRegistry.getApplication("App", {});
     const page = (
-      <ReactNativeStylesContext.Provider value={getStyleElement()}>
+      <ReactNativeStylesContext.Provider value={{ getStyleElement }}>
         <App />
       </ReactNativeStylesContext.Provider>
     );

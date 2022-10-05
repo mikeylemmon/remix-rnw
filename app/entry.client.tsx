@@ -13,7 +13,9 @@ const { getStyleElement } = AppRegistry.getApplication("App");
 
 hydrateRoot(
   document,
-  <ReactNativeStylesContext.Provider value={getStyleElement()}>
+  <ReactNativeStylesContext.Provider
+    value={{ isClient: true, getStyleElement }}
+  >
     <App />
   </ReactNativeStylesContext.Provider>
 );
