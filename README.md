@@ -10,7 +10,7 @@ Related discussion: [Usage with React Native (+ Web)](https://github.com/remix-r
   ([open in CodeSandbox](https://githubbox.com/mikeylemmon/remix-rnw/blob/with-modded-remix/app/routes/index.tsx))
   - Uses a [modded version of @remix-run/dev](https://github.com/remix-run/remix/compare/main...mikeylemmon:remix:config-add-resolve-opts)
     to enable compatibility with community packages that utilize react-native-web
-- **[no-modded-remix](https://github.com/mikeylemmon/remix-rnw/tree/no-errors)**
+- **[no-modded-remix](https://github.com/mikeylemmon/remix-rnw/tree/no-modded-remix)**
   ([open in CodeSandbox](https://githubbox.com/mikeylemmon/remix-rnw/blob/no-modded-remix/app/routes/index.tsx))
   - Can use react-native-web, but unable to use most other packages in the
     react-native ecosystem
@@ -45,17 +45,15 @@ More discussion here: [Usage with React Native (+ Web) [comment #3777340]](https
   - Encounters a different hydration error, reported by Horus:
     [necolas/react-native-web#2326](https://github.com/necolas/react-native-web/issues/2326)
     - It appears that issue was closed based on a misreading of Horus's code
-    - The errors do not occur in an express-based setup: https://github.com/mikeylemmon/cra-rnw-ssr
-- [hydr8-err-tyrauber](https://github.com/mikeylemmon/remix-rnw/tree/tyrauber-styles)
+- [hydr8-err-tyrauber](https://github.com/mikeylemmon/remix-rnw/tree/hydr8-err-tyrauber)
   ([open in CodeSandbox](https://githubbox.com/mikeylemmon/remix-rnw/blob/hydr8-err-tyrauber/app/routes/index.tsx))
   - This branch is very similar to the
     [hydr8-err-horus](https://github.com/mikeylemmon/remix-rnw/tree/hydr8-err-horus)
     branch, but uses
-    [Ty Rauber's code](https://github.com/tyrauber/remix-expo/tree/main/apps/remix/app
+    [Ty Rauber's code](https://github.com/tyrauber/remix-expo/tree/main/apps/remix/app)
     for server-side RNW styles instead of Horus Lugo's
     ([diff](https://github.com/mikeylemmon/remix-rnw/compare/hydr8-err-horus...hydr8-err-tyrauber)).
     The hydration errors are the same.
-    - The errors do not occur in an express-based setup: https://github.com/mikeylemmon/cra-rnw-ssr
 
 ---
 

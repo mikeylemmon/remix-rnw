@@ -1,76 +1,60 @@
+import { LinearGradient } from "expo-linear-gradient";
+import { View } from "react-native";
 import CompA from "~/components/CompA";
 import CompB from "~/components/CompB";
-import { LinearGradient } from "expo-linear-gradient";
 
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
+    <View style={{ padding: 15 }}>
       <h1>Welcome to Remix (+ RNW)</h1>
       <p>
-        See console logs for hydration error caused by inclusion of RNW View
-        component: (
-        <span
-          style={{ color: "red" }}
-        >{`"Warning: Expected server HTML to contain a matching <meta> in <head>.`}</span>
-        )
-      </p>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://github.com/remix-run/remix/discussions/1578"
-            rel="noreferrer"
-          >
-            Remix + RNW Github Discussion
-          </a>
-        </li>
-      </ul>
-
-      <p style={{ marginTop: "2rem" }}>
-        This branch (
-        <a
-          target="_blank"
-          href="https://github.com/mikeylemmon/remix-rnw/tree/mod-remix-resolve-configs"
-          rel="noreferrer"
-        >
-          mod-remix-resolve-configs
-        </a>
-        ) uses{" "}
-        <a
-          target="_blank"
-          href="https://github.com/mikeylemmon/remix/commit/b0e79b90def5cce23f2978ed12ba4555ff8bcba2"
-          rel="noreferrer"
-        >
-          a mod of @remix-run/dev
+        This branch uses a{" "}
+        <a href="https://github.com/remix-run/remix/compare/main...mikeylemmon:remix:config-add-resolve-opts">
+          modded version of @remix-run/dev
         </a>{" "}
-        to enable compatibility with many packages in the react-native(-web)
-        ecosystem by...
+        to enable compatibility with community packages that utilize
+        react-native-web.
       </p>
-      <ul>
-        <li>
-          prioritizing resolving files with a {`".web.<ext>" `}
-          over files with just {`".<ext>"`}
-        </li>
-        <li>
-          aliasing {`"react-native" `}
-          to {`"react-native-web"`}.
-        </li>
-      </ul>
 
-      <h3 style={{ marginTop: "2rem" }}>
-        import CompA from '~/app/components/CompA'
+      <h3 style={{ marginTop: "1rem" }}>
+        {`import { LinearGradient } from '`}
+        <a href="https://docs.expo.dev/versions/latest/sdk/linear-gradient/">
+          expo-linear-gradient
+        </a>
+        {`'`}
       </h3>
-      <CompA />
+      <LinearGradient
+        colors={["purple", "teal"]}
+        style={{ padding: "5rem", borderRadius: 30 }}
+        start={{ x: 0.48, y: 0 }}
+        end={{ x: 0.52, y: 1 }}
+      />
 
-      <h3 style={{ marginTop: "2rem" }}>
-        import CompB from '~/app/components/CompB'
-      </h3>
-      <CompB />
+      <h2 style={{ marginTop: "3rem" }}>RN-style import resolution:</h2>
+      <View style={{ backgroundColor: "#ddd", padding: 15 }}>
+        <pre
+          style={{
+            backgroundColor: "#333",
+            color: "white",
+            padding: 15,
+            whiteSpace: "pre",
+          }}
+        >
+          {`$ tree app/components/
+           ├── CompA.tsx
+           ├── CompA.web.tsx
+           ├── CompB.ios.tsx
+           └── CompB.tsx`}
+        </pre>
 
-      <h3
-        style={{ marginTop: "2rem" }}
-      >{`import { LinearGradient } from 'expo-linear-gradient'`}</h3>
-      <LinearGradient colors={["purple", "blue"]} style={{ padding: "5rem" }} />
-    </div>
+        <h3>import CompA from '~/app/components/CompA'</h3>
+        <CompA />
+
+        <h3 style={{ marginTop: "2rem" }}>
+          import CompB from '~/app/components/CompB'
+        </h3>
+        <CompB />
+      </View>
+    </View>
   );
 }
