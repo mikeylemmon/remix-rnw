@@ -15,6 +15,22 @@ Related discussion: [Usage with React Native (+ Web)](https://github.com/remix-r
   - Can use react-native-web, but unable to use most other packages in the
     react-native ecosystem
 
+### Monorepo examples with Expo
+
+These branches use lerna/yarn workspaces to enable remix and expo to utilize a
+shared UI package. To get these branches up and running:
+
+1. `yarn && yarn bootstrap`
+2. Run remix: `cd packages/app-remix && yarn dev`
+3. Run expo: `cd packages/app-remix && yarn start`
+   - or `yarn ios`, `yarn android`, etc (see Expo docs for details)
+
+- **[monorepo-expo](https://github.com/mikeylemmon/remix-rnw/tree/monorepo-expo)**
+  - Uses latest official expo release
+- **[monorepo-expo-router](https://github.com/mikeylemmon/remix-rnw/tree/monorepo-expo-router)**
+  - Uses [expo-router](https://github.com/expo/router) ([docs](https://expo.github.io/router/docs)),
+    which adds filesystem-based routing to expo. Note that expo-router is currently in an early beta/RFC phase
+
 ### Branches encountering hydration errors
 
 These branches were created to investigate mysterious hydration errors

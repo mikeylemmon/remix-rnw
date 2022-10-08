@@ -1,0 +1,13 @@
+{
+  "name": "@remix-rnw/styles",
+  "version": "0.0.0",
+  "main": "./index.tsx",
+  "private": true,
+  "peerDependencies": {
+    "react": "*",
+    "react-native-web": "*"
+  },
+  "devDependencies": {
+    "@types/react-native-web": "npm:@types/react-native"
+  }
+}

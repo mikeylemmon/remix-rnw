@@ -6,6 +6,14 @@ module.exports = {
   // serverBuildPath: "build/index.js",
   // publicPath: "/build/",
 
+  watchPaths: ["../shared-*/**/*", "../remix-rnw-*/**/*"],
+
+  serverDependenciesToBundle: [
+    "@remix-rnw/styles",
+    "@shared/ui",
+    "expo-status-bar",
+  ],
+
   // New config options to support React Native
   // (see https://github.com/mikeylemmon/remix/commit/b0e79b90def5cce23f2978ed12ba4555ff8bcba2)
   resolveExtensions: [".tsx", ".ts", ".jsx", ".js", ".css", ".json"]
@@ -14,6 +22,4 @@ module.exports = {
   resolveAliases: {
     "react-native": require.resolve("react-native-web"),
   },
-
-  serverDependenciesToBundle: ["expo-linear-gradient"],
 };
