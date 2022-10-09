@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.0",
-    "@shared/ui": "*",
+    "@shared/routes": "*",
     "expo": "~46.0.13",
     "expo-router": "^0.0.25",
     "expo-splash-screen": "~0.16.2",

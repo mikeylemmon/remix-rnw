@@ -1,0 +1,25 @@
+{
+  "name": "@shared/routes",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "private": true,
+  "dependencies": {
+    "@shared/ui": "*"
+  },
+  "devDependencies": {
+    "@types/react-native": "^0.70.4"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-web": "*"
+  },
+  "peerDependenciesMeta": {
+    "react-native": {
+      "optional": true
+    },
+    "react-native-web": {
+      "optional": true
+    }
+  }
+}

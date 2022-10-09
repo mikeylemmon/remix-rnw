@@ -10,8 +10,8 @@ module.exports = {
 
   serverDependenciesToBundle: [
     "@remix-rnw/styles",
+    "@shared/routes",
     "@shared/ui",
-    "expo-status-bar",
   ],
 
   // New config options to support React Native

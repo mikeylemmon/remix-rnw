@@ -1,2 +1,2 @@
-import { Details } from "@shared/ui";
+import { Details } from "@shared/routes";
 export default Details;

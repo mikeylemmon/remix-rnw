@@ -21,6 +21,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export const linkButton = styles.linkButton;
-export const linkButtonText = styles.linkButtonText;
-export const screen = styles.screen;
+export const stylesLinkButton = styles.linkButton;
+export const stylesLinkButtonText = styles.linkButtonText;
+export const stylesScreen = styles.screen;
