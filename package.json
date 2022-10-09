@@ -9,5 +9,8 @@
   },
   "devDependencies": {
     "lerna": "^5.4.2"
+  },
+  "resolutions": {
+	"metro": "~0.72.3"
   }
 }

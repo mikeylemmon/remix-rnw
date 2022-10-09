@@ -10,12 +10,23 @@
     "@types/react-native": "^0.70.4"
   },
   "peerDependencies": {
+    "@remix-run/react": "*",
     "expo": "*",
+    "expo-router": "*",
     "react": "*",
     "react-native": "*",
     "react-native-web": "*"
   },
   "peerDependenciesMeta": {
+    "@remix-run/react": {
+      "optional": true
+    },
+    "expo": {
+      "optional": true
+    },
+    "expo-router": {
+      "optional": true
+    },
     "react-native": {
       "optional": true
     },
