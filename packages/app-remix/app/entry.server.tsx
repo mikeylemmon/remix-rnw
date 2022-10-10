@@ -2,10 +2,15 @@ import { PassThrough } from "stream";
 import type { EntryContext } from "@remix-run/node";
 import { Response } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
-import { renderToPipeableStream } from "react-dom/server";
+import { renderToPipeableStream, renderToString } from "react-dom/server";
 import { withRNWStyles } from "@remix-rnw/styles";
 
 const ABORT_DELAY = 5000;
+
+// USE_STREAM toggles between `renderToPipeableStream` and `renderToString`.
+// renderToPipeableStream aggrivates mysteriously erratic hydration errors
+// so we disable it for now
+const USE_STREAM = false;
 
 export default function handleRequest(
   request: Request,
@@ -13,6 +18,19 @@ export default function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext
 ) {
+  if (!USE_STREAM) {
+    const markup = renderToString(
+      withRNWStyles(<RemixServer context={remixContext} url={request.url} />)
+    );
+
+    responseHeaders.set("Content-Type", "text/html");
+
+    return new Response("<!DOCTYPE html>" + markup, {
+      status: responseStatusCode,
+      headers: responseHeaders,
+    });
+  }
+
   return new Promise((resolve, reject) => {
     let didError = false;
 

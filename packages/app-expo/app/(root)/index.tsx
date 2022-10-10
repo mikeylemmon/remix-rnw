@@ -1,2 +1,1 @@
-import { Home } from "@shared/ui";
-export default Home;
+export { Home as default } from "@shared/ui";

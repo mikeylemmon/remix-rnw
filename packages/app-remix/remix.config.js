@@ -9,8 +9,8 @@ module.exports = {
   watchPaths: ["../shared-*/**/*", "../remix-rnw-*/**/*"],
 
   serverDependenciesToBundle: [
-    "@remix-rnw/styles",
-    "@shared/ui",
+    /^@remix-rnw\//,
+    /^@shared\//,
     "expo-status-bar",
   ],
 

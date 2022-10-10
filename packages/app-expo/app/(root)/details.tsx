@@ -1,2 +1,1 @@
-import { Details } from "@shared/ui";
-export default Details;
+export { Details as default } from "@shared/ui";
